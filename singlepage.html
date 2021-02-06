@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SinglePage</title>
+    <style>
+        div {
+            display: none;
+        }
+    </style>
+
+    <script>
+        // function to show page
+        function showPage(page) {
+
+            // set all div to display = 'none';
+            document.querySelectorAll('div').forEach(div => {
+                div.style.display = 'none';
+            })
+            // and only the clicked button will have display = "block"; respected to it's dataset-attribute.
+            document.querySelector(`#${page}`).style.display = 'block';
+        }
+        // add an event listenr so that the should get loaded full 
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // and for each button run a function so that we can capture the dataset of clicked button.
+            document.querySelectorAll('button').forEach(button => {
+
+                // whichever button is clicked take it's dataset attribute and pass it to the showPage(arg) argument.
+                button.onclick = function() {
+                    showPage(this.dataset.page);  // here this keyword refers to whatever element has received the event
+                                                  // and here it is whatever button was clicked on.
+                }
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <h1>SinglePage Containing Multiple Pages</h1>
+    <button data-page="page1">Page 1</button>
+    <button data-page="page2">Page 2</button>
+    <button data-page="page3">Page 3</button>
+    <div id="page1">
+        <h1>This is page 1.</h1>
+    </div>
+    <div id="page2">
+        <h1>This is page 2.</h1>
+    </div>
+    <div id="page3">
+        <h1>This is page 3.</h1>
+    </div>
+</body>
+</html>

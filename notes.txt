@@ -1,0 +1,27 @@
+======= WINDOWS OBJECT =======
+It represents the physical window on the computer screen that displays all of their content.
+
+>>> Some properties of windows:
+
+1. windows.onpopstate:
+
+2. windows.innerHeight : represents the height of the user's window (in pixels).
+
+3. windows.innerWidth : how wide is the user's window (in pixels).
+
+4. windows.scrollY : how many pixels far down we have scrolled (at top of the page it is zero).
+ 
+JavaScript also provide us another object called document object. Well, the document
+represents the entire web page, but if webpages are long, oftentimes a web page doesn't
+fit entirely inside of the window.
+
+5. document.body.offsetHeight : It represents how tall the entire height of the document is.
+
+>>> If the user is at the bottom of the page it means: scrollY + innerHeight must be at least or equal
+    to document.body.offsetHeight.
+
+In JavaScript document.addEventListener can takes an optional argument the event itself, which is a JavaScript
+object that contains information about the event that happened, like the clcik event, or the scroll event, or the 
+keydown event or the keyup event, for exapmle.
+One of the properties we get access to is:
+event.target means what was the target of the event(what event actually happened).

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate</title>
+    <style>
+        /* defining what the animation actually does */
+        @keyframes move{
+            /* where sould the element start waht should its style properties be */
+            /*from*/ 0% {
+                font-size: 20px;
+                left: 0%;
+            }
+            /* at the end what should its style properties be */
+            /* to */ 50% {
+                /* font-size: 100px; */
+                color:aquamarine;
+                left: 50%;
+            }
+            100% {
+                left: 0%;
+                color: #A2F;
+            }
+        }
+        h1{
+            position: relative; /* meaning its position should be relative to other elements or things in its parent */
+            animation-name: move;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite; /* how many times animation has to be done (infinite for never stop but it can be any integer also)*/
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const h1 = document.querySelector('h1');
+            h1.style.animationPlayState = 'paused';
+        document.querySelector('#btn').onclick = () => {
+            if (h1.style.animationPlayState === 'paused'){
+            h1.style.animationPlayState = 'running';
+        }
+        else {
+            h1.style.animationPlayState = 'paused';
+            }
+     } 
+
+    });
+    </script>
+</head>
+<body>
+    <button id="btn">Click Here</button>
+    <h1>Animation!</h1>
+</body>
+</html>

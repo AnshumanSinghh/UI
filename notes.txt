@@ -25,3 +25,30 @@ object that contains information about the event that happened, like the clcik e
 keydown event or the keyup event, for exapmle.
 One of the properties we get access to is:
 event.target means what was the target of the event(what event actually happened).
+
+
+================== REACT ==================
+In Imperative programming it's hard to use or update variables dynamically. But in case of Declarative Programming it's
+easy to do this type of things and we can do this directly putting the variable inside of the html elelments.
+
+Exapmle:
+View
+    <h1> {num} </h1>
+
+Logic
+    num += 1; // it will keep updating num in h1 tag.
+
+
+There are a number of ways  to get reaact to working on our web page, but the simplest is probably just to include these
+three JavaScript packages inside of our web page.
+1. React : to include React itself. Which going to be the library that's going to allow us to define these components and how they behave.
+
+2. ReactDOM : special package that's going to allow us to take react components and insert them into the DOM (that represents the structure 
+              of the entire page).
+
+3. Babel : It is going to be a package that we're going to use in order to translate code from one language to another.
+
+So, when we're writing React code, we are not actually writing JavaScript. We're going to be writing an extension to JavaScript known as JSX.
+And JSX is going to be an extension of JavaScript that looks alot like JavaScript, but has some additional features. In paricular it has the 
+ability to effectively allow us to represent HTML inside of our JavaScript code in a way that's much easier to read and going to be convenient for 
+us to deal with.

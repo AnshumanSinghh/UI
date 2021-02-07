@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game!</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+    <style>
+        #app {
+            text-align: center;
+            font-family: sans-serif;
+        }
+        #problem {
+            font-size: 60px;
+        }
+        #winner {
+            font-size: 60px;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+        class App extends React.Component {
+            // since it is a OOPS language we need to start by saying super(props)
+            constructor(props) {
+                super(props)  // just to say make sure that this all gets set up as a React Component.
+                this.state = {  // for JSON object cretaion
+                    num1: 1,
+                    num2: 1,
+                    response: "",
+                    score: 0,
+                    msg: "",
+                };
+            }
+
+            render() {
+
+                if(this.state.score === 10) {
+                    return (
+                        <div id="winner">You won!</div>
+                    );
+                }
+                return (
+                    <div>
+                        <div id="problem">{this.state.num1} + {this.state.num2}</div>
+                        <input onKeyPress={this.inputKeyPress} onChange={this.updateResposne} value={this.state.response} />
+                        <div>Score: {this.state.score}</div>
+                        <div>You have typed: {this.state.response}</div>
+                        <div>{this.state.msg}</div>
+                    </div>
+                );
+            }
+
+            // function to update and check the score
+            inputKeyPress = (event) => {
+                if (event.key === 'Enter') {  // event.key will give what key was pressed.
+                    const answer = parseInt(this.state.response);
+                    if (answer === this.state.num1 + this.state.num2) {
+                        // User got question right
+                        this.setState(state => ({
+                            score: state.score + 1,
+                            num1: Math.ceil(Math.random() * 10),
+                            num2: Math.ceil(Math.random() * 10),
+                            msg: "Wohaa!! You got +1 point.",
+                            response: "",
+                        }));
+                    }
+                    else {
+                        // User got question wrong
+                        this.setState(state => ({
+                            score: state.score -1,
+                            msg: "Wrong answer! You lose -1 pont.",
+                            response: "",
+                        }));
+                    } 
+                }
+            }
+
+            // function to update the response or what the user has typed.
+            updateResposne = (event) => {
+                this.setState({
+                    response: event.target.value  // it is going to contain whatever the users typed in.
+                });
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector('#app'));
+
+    </script>
+</body>
+
+</html>

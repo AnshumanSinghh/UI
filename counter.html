@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter!</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+        class App extends React.Component {
+            // since it is a OOPS language we need to start by saying super(props)
+            constructor(props) {
+                super(props)  // just to say make sure that this all gets set up as a React Component.
+                this.state = {  // for JSON object cretaion
+                    count: 0,
+                };
+            }
+
+            render() {
+                return (
+                    <div>
+                       <h1>{this.state.count}</h1>
+                        <button id="btn" onClick={this.count}>Count</button> -------- onClick="this.count" means onClick run count function.
+                        <h1>The current count is: {this.state.count}.</h1>
+                    </div>
+                );
+            }
+            count = () => {
+              // React way for updating the state [this.setState(initial_state => ({new_state}))]
+               this.setState(state => ({
+                    count: state.count + 1
+               }));
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector('#app'));
+
+    </script>
+</body>
+</html>
